@@ -1,14 +1,12 @@
 package com.kuzmin.nirvana.repository
 
 import android.graphics.Bitmap
-import com.kuzmin.nirvana.api.Api
-import com.kuzmin.nirvana.api.Me
-import com.kuzmin.nirvana.api.Token
-import com.kuzmin.nirvana.api.User
+import com.kuzmin.nirvana.api.*
 import com.kuzmin.nirvana.model.PostModel
 import retrofit2.Response
 
 class NetworkRepository(private val api: Api) : Repository {
+    private var token: String? = null
     override suspend fun getPosts(): Response<List<PostModel>> {
         TODO("Not yet implemented")
     }
@@ -61,11 +59,10 @@ class NetworkRepository(private val api: Api) : Repository {
     }
 
     override suspend fun authenticate(login: String, password: String): Response<Token> {
-        TODO("Not yet implemented")
+        token = api.authenticate(AuthRequestParams(username = login, password = password)).body()?.token
+        return api.authenticate(AuthRequestParams(username = login, password = password))
     }
 
-    override suspend fun register(login: String, password: String): Response<Token> {
-        TODO("Not yet implemented")
-    }
-
+    override suspend fun register(login: String, password: String): Response<Token> =
+        api.register(RegistrationRequestParams(username = login, password = password))
 }

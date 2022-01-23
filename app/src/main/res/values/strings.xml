@@ -6,5 +6,7 @@
     <string name="authentication">аутентификация</string>
     <string name="ErorLogin">Не корректный логин</string>
     <string name="ErorPassword">Не корректный пароль</string>
-
+    <string name="google_play_unavailable">Сервисы Google Play недоступны</string>
+    <string name="erorAuthorization">Неверный логин или пароль</string>
+    <string name="erorConnect">Ошибка подключения</string>
 </resources>

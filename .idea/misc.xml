@@ -3,10 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Nirvana/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.2203125" />
+        <entry key="..\:/Nirvana/app/src/main/res/drawable/ic_baseline_comment_24.xml" value="0.1" />
+        <entry key="..\:/Nirvana/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.2203125" />
+        <entry key="..\:/Nirvana/app/src/main/res/drawable/ic_baseline_favorite_border_false.xml" value="0.2203125" />
+        <entry key="..\:/Nirvana/app/src/main/res/drawable/ic_baseline_favorite_false.xml" value="0.2203125" />
+        <entry key="..\:/Nirvana/app/src/main/res/drawable/ic_baseline_favorite_true.xml" value="0.2203125" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_item_tool.xml" value="0.1213768115942029" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Nirvana/app/src/main/res/layout/activity_post.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nirvana/app/src/main/res/layout/activity_post.xml" value="0.33" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_registration.xml" value="0.1" />
+        <entry key="..\:/Nirvana/app/src/main/res/layout/item_tool_post.xml" value="0.25" />
       </map>
     </option>
   </component>

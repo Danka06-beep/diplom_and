@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nirvana">
         <activity
+            android:name=".ActivityRepost"
+            android:exported="false" />
+        <activity
+            android:name=".CreatePostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreatePost"
+            android:exported="false" />
+        <activity
             android:name=".RegistrationActivity"
             android:exported="false" />
         <activity

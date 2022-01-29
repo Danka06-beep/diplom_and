@@ -10,5 +10,20 @@
     <string name="erorAuthorization">Неверный логин или пароль</string>
     <string name="erorConnect">Ошибка подключения</string>
     <string name="repeat_password">Повторите пароль </string>
+    <string name="Invalidlogin">Не корректный пароль </string>
+    <string name="InvalidPassword">неверный пароль </string>
+    <string name="loadData">Пожалуйста подождите идёт загрузка данных</string>
+    <string name="create_new_post">Создание поста</string>
+    <string name="enter_your_post_content">Введите текст</string>
+    <string name="create">Опубликовать</string>
+    <string name="progress"> в процессе</string>
+    <string name="repost_repost">Не могу сделать репост репоста</string>
+    <string name="creat_repost">Создание поста</string>
+    <string name="please_wait">Пожалуйста подождите</string>
+    <string name="download_post">загрузка поста</string>
+    <string name="error_occured">Произошла ошибка</string>
+
+
+
 
 </resources>

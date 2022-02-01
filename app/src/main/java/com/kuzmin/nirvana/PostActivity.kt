@@ -5,9 +5,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.kuzmin.nirvana.Adapter.PostAdapter
 import com.kuzmin.nirvana.api.App
 import com.kuzmin.nirvana.model.PostModel
@@ -15,6 +17,7 @@ import com.kuzmin.nirvana.other.Helper
 import com.kuzmin.nirvana.other.isFirstTime
 import com.kuzmin.nirvana.other.setNotFirstTime
 import kotlinx.android.synthetic.main.activity_post.*
+import kotlinx.android.synthetic.main.item_tool_post.*
 import kotlinx.coroutines.launch
 
 class PostActivity : AppCompatActivity()  ,
@@ -23,16 +26,26 @@ class PostActivity : AppCompatActivity()  ,
     private var dialog: ProgressDialog? = null
     var myadapter = PostAdapter(ArrayList<PostModel>())
     var items = ArrayList<PostModel>()
+    val id = intent.getStringExtra("id")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
+        lifecycleScope.launch {
+            val resp = id?.let { App.repository.getPostId(it.toLong()) }
+            val post = resp?.body()
+            when (post?.attachment?.mediaType) {
+                PostModel.AttachmentType.IMAGE -> loadImage(photoImg, post.attachment.url)
+            }
+        }
         fab.setOnClickListener {
             goToNewPost()
         }
         swipeContainer.setOnRefreshListener {
             refreshData()
         }
+
 
     }
 
@@ -122,5 +135,12 @@ class PostActivity : AppCompatActivity()  ,
 
     override fun onLoadMoreBtnClickListener(last: Long, size: Int) {
 
+    }
+    private fun loadImage(photoImg: ImageView, imageUrl: String) {
+        Glide
+            .with(photoImg.context)
+            .load(imageUrl)
+            .centerCrop()
+            .into(photoImg)
     }
 }

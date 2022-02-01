@@ -99,7 +99,7 @@ class CreatePostActivity : AppCompatActivity() {
         Toast.makeText(this@CreatePostActivity, getString(R.string.error_occured), Toast.LENGTH_LONG).show()
     }
     private fun transparetAllIcons() {
-        attachPhotoImg.setImageResource(R.drawable.ic_baseline_inactive)
+        attachPhotoImg.setImageResource(R.drawable.ic_baseline_image_true)
     }
     private fun dispatchTakePictureIntent() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
@@ -139,4 +139,3 @@ class CreatePostActivity : AppCompatActivity() {
         }
     }
     }
-}

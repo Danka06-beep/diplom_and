@@ -102,7 +102,9 @@ class PostActivity : AppCompatActivity()  ,
                 }
                 adapter?.notifyItemChanged(position)
             }
+
         }
+
     }
 
     override fun onRepostsBtnClicked(item: PostModel, position: Int, it: String) {

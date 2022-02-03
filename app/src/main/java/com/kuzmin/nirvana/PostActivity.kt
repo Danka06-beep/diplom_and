@@ -30,9 +30,12 @@ class PostActivity : AppCompatActivity()  ,
     val id = intent.getStringExtra("id")
     val popMenu = PopupMenu(this,fab)
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
+
         popMenu.menuInflater.inflate(R.menu.popup_menu,popMenu.menu)
         popMenu.setOnMenuItemClickListener { menuItem ->
             val id = menuItem.itemId
@@ -44,6 +47,7 @@ class PostActivity : AppCompatActivity()  ,
             }
             false
         }
+
         lifecycleScope.launch {
             val resp = id?.let { App.repository.getPostId(it.toLong()) }
             val post = resp?.body()
@@ -53,6 +57,7 @@ class PostActivity : AppCompatActivity()  ,
         }
         fab.setOnClickListener {
             popMenu.show()
+            fab.setBackgroundResource(R.drawable.ic_baseline_close_24)
         }
         swipeContainer.setOnRefreshListener {
             refreshData()

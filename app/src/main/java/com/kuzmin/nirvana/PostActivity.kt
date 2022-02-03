@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,11 +28,22 @@ class PostActivity : AppCompatActivity()  ,
     var myadapter = PostAdapter(ArrayList<PostModel>())
     var items = ArrayList<PostModel>()
     val id = intent.getStringExtra("id")
-
+    val popMenu = PopupMenu(this,fab)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
+        popMenu.menuInflater.inflate(R.menu.popup_menu,popMenu.menu)
+        popMenu.setOnMenuItemClickListener { menuItem ->
+            val id = menuItem.itemId
+            if(id == R.id.user){
+                goToUser()
+            }
+            if(id == R.id.createPost){
+                goToNewPost()
+            }
+            false
+        }
         lifecycleScope.launch {
             val resp = id?.let { App.repository.getPostId(it.toLong()) }
             val post = resp?.body()
@@ -40,13 +52,11 @@ class PostActivity : AppCompatActivity()  ,
             }
         }
         fab.setOnClickListener {
-            goToNewPost()
+            popMenu.show()
         }
         swipeContainer.setOnRefreshListener {
             refreshData()
         }
-
-
     }
 
     private fun refreshData() {
@@ -135,6 +145,11 @@ class PostActivity : AppCompatActivity()  ,
         startActivity(intent)
     }
 
+    fun goToUser() {
+        val intent = Intent(this@PostActivity, UserActivity::class.java)
+        startActivity(intent)
+    }
+
     override fun onLoadMoreBtnClickListener(last: Long, size: Int) {
 
     }
@@ -145,4 +160,5 @@ class PostActivity : AppCompatActivity()  ,
             .centerCrop()
             .into(photoImg)
     }
+
 }

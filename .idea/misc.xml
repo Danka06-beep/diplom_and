@@ -17,9 +17,12 @@
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_post.xml" value="0.25" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_registration.xml" value="0.25" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_repost.xml" value="0.19429347826086957" />
+        <entry key="..\:/Nirvana/app/src/main/res/layout/item_tool_menu.xml" value="0.1" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/item_tool_more.xml" value="0.19429347826086957" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/item_tool_post.xml" value="0.22" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/item_tool_repost.xml" value="0.25" />
+        <entry key="..\:/Nirvana/app/src/main/res/layout/popup_menu.xml" value="0.1" />
+        <entry key="..\:/Nirvana/app/src/main/res/menu/popup_menu.xml" value="0.2596899224806202" />
       </map>
     </option>
   </component>

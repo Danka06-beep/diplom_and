@@ -12,19 +12,25 @@
         <entry key="..\:/Nirvana/app/src/main/res/drawable/ic_baseline_favorite_true.xml" value="0.2203125" />
         <entry key="..\:/Nirvana/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.14907407407407408" />
         <entry key="..\:/Nirvana/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.14074074074074075" />
+        <entry key="..\:/Nirvana/app/src/main/res/layout/activity_change_password.xml" value="0.22" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_create_post.xml" value="0.25" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_item_tool.xml" value="0.1213768115942029" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_post.xml" value="0.25" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_registration.xml" value="0.25" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/activity_repost.xml" value="0.19429347826086957" />
-        <entry key="..\:/Nirvana/app/src/main/res/layout/activity_user.xml" value="0.19010416666666666" />
+        <entry key="..\:/Nirvana/app/src/main/res/layout/activity_user.xml" value="0.33" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/item_tool_menu.xml" value="0.1" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/item_tool_more.xml" value="0.19429347826086957" />
-        <entry key="..\:/Nirvana/app/src/main/res/layout/item_tool_post.xml" value="0.22" />
+        <entry key="..\:/Nirvana/app/src/main/res/layout/item_tool_post.xml" value="0.4" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/item_tool_repost.xml" value="0.25" />
         <entry key="..\:/Nirvana/app/src/main/res/layout/popup_menu.xml" value="0.1" />
+        <entry key="..\:/Nirvana/app/src/main/res/layout/tool_bar.xml" value="0.19746376811594202" />
+        <entry key="..\:/Nirvana/app/src/main/res/layout/toolbar.xml" value="0.19746376811594202" />
         <entry key="..\:/Nirvana/app/src/main/res/menu/popup_menu.xml" value="0.2596899224806202" />
+        <entry key="..\:/Nirvana/app/src/main/res/menu/tool_bar.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nirvana/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.18518518518518517" />
+        <entry key="..\:/Nirvana/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2203125" />
       </map>
     </option>
   </component>

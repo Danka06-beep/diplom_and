@@ -1,6 +1,7 @@
 package com.kuzmin.nirvana.repository
 
 import android.graphics.Bitmap
+import com.kuzmin.nirvana.api.ChangePassword
 import com.kuzmin.nirvana.api.Me
 import com.kuzmin.nirvana.api.Token
 import com.kuzmin.nirvana.api.User
@@ -27,5 +28,7 @@ interface Repository {
     suspend fun authenticate(login: String, password: String): Response<Token>
 
     suspend fun register(login: String, password: String): Response<Token>
+
+    suspend fun changePassword(password: String, passwordrepeat: String): Response<ChangePassword>
 
 }

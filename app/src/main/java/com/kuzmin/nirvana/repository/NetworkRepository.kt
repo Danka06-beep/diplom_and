@@ -73,4 +73,9 @@ class NetworkRepository(private val api: Api) : Repository {
 
     override suspend fun register(login: String, password: String): Response<Token> =
         api.register(RegistrationRequestParams(username = login, password = password))
+
+    override suspend fun changePassword(password: String,passwordrepeat: String): Response<ChangePassword> =
+       api.changePassword(ChangePassword(password = password, passwordrepeat = passwordrepeat))
+
+
 }

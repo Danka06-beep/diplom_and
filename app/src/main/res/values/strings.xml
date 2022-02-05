@@ -24,6 +24,9 @@
     <string name="error_occured">Произошла ошибка</string>
     <string name="post_created_successfully">Пост создан</string>
     <string name="error_upload">Ошибка в загрузке изображения</string>
+    <string name="change_password">Забыли пароль?</string>
+    <string name="enter_phone_number">Введите свой номер телефона</string>
+
 
 
 </resources>

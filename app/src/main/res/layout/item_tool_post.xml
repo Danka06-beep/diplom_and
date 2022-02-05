@@ -24,13 +24,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
         android:textColor="#999999"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/avatar"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="некоторое время назад"
-        />
+        tools:text="некоторое время назад" />
 
     <TextView
         android:id="@+id/author"
@@ -40,7 +39,7 @@
         android:textColor="@color/black"
         app:layout_constraintBaseline_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/avatar"
-        tools:layout_editor_absoluteY="30dp"
+        tools:layout_editor_absoluteY="0dp"
         tools:text="name" />
 
     <TextView
@@ -59,7 +58,7 @@
         android:id="@+id/likeBtn"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="44dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_favorite_false"

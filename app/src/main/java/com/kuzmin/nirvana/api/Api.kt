@@ -16,6 +16,9 @@ data class TokenDevice(val id: Long,val tokenDevice: String)
 
 data class Me(val id: Long = 0,val name: String)
 
+data class ChangePassword(val password: String, val passwordrepeat: String)
+
+
 interface Api {
 
     @GET("api/v1/me")
@@ -29,6 +32,9 @@ interface Api {
 
     @POST("api/v1/registration")
     suspend fun register(@Body registrationRequestParams: RegistrationRequestParams): Response<Token>
+
+    @POST("api/v1/changePassword")
+    suspend fun changePassword(@Body changePasswordRequestParams: ChangePassword): Response<ChangePassword>
 
     @Multipart
     @POST("api/v1/media")

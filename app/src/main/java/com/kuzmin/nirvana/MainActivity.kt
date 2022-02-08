@@ -22,15 +22,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        goPost()
+        goToPost()
         btnLogin.setOnClickListener {
             when {
                 !isValidUsername(enterLogin.text.toString()) -> {
-                    Toast.makeText(this@MainActivity, R.string.ErorLogin, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity,
+                        getString(R.string.Invalidlogin),
+                        Toast.LENGTH_LONG).show()
                 }
                 !isValidPassword(enterPassword.text.toString()) -> {
-                    Toast.makeText(this@MainActivity, R.string.ErorPassword, Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(this@MainActivity,
+                        getString(R.string.InvalidPassword),
+                        Toast.LENGTH_LONG).show()
                 }
                 else -> {
                     lifecycleScope.launch {
@@ -39,12 +42,14 @@ class MainActivity : AppCompatActivity() {
                         val login = enterLogin.text?.toString().orEmpty()
                         val password = enterPassword.text?.toString().orEmpty()
                         try {
+
                             val token = App.repository.authenticate(login, password)
                             dialog?.dismiss()
+
                             if (token.isSuccessful) {
                                 setUserAuth(requireNotNull(token.body()).token)
                                 requestToken()
-                                goPost()
+                                goToPost()
                             } else {
                                 Toast.makeText(this@MainActivity,
                                     getString(R.string.erorAuthorization),
@@ -66,15 +71,17 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
     }
 
-    private fun goPost() {
+    private fun goToPost() {
         if (authenticated()) {
             val intent = Intent(this@MainActivity, PostActivity::class.java)
             startActivity(intent)
             finish()
         }
     }
+
     private fun authenticated(): Boolean =
         getSharedPreferences(API_SHARED_FILE, Context.MODE_PRIVATE).getString(
             AUTHENTICATED_SHARED_KEY,
@@ -84,6 +91,7 @@ class MainActivity : AppCompatActivity() {
     private fun setUserAuth(token: String) =
         getSharedPreferences(API_SHARED_FILE, Context.MODE_PRIVATE).edit()
             .putString(AUTHENTICATED_SHARED_KEY, token).apply()
+
 
     private fun requestToken(){
         with(GoogleApiAvailability.getInstance()) {
@@ -112,3 +120,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
     }
+

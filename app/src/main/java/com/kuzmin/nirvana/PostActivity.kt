@@ -45,6 +45,8 @@ class PostActivity : AppCompatActivity()  ,
             if(id == R.id.createPost){
                 goToNewPost()
             }
+
+
             false
         }
 
@@ -93,7 +95,6 @@ class PostActivity : AppCompatActivity()  ,
                     adapter = myadapter.apply {
                         likeBtnClickListener = this@PostActivity
                         repostsBtnClickListener = this@PostActivity
-                        loadMoreBtnClickListener = this@PostActivity
                     }
                     myadapter.newRecentPosts(items)
                 }

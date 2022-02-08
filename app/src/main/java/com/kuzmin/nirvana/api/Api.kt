@@ -18,7 +18,6 @@ data class Me(val id: Long = 0,val name: String)
 
 data class ChangePassword(val password: String, val passwordrepeat: String)
 
-
 interface Api {
 
     @GET("api/v1/me")

@@ -11,6 +11,11 @@ import java.io.ByteArrayOutputStream
 
 class NetworkRepository(private val api: Api) : Repository {
     private var token: String? = null
+    override suspend fun authenticate(login: String, password: String): Response<Token> {
+        token = api.authenticate(AuthRequestParams(username = login, password = password)).body()?.token
+        return api.authenticate(AuthRequestParams(username = login, password = password))
+    }
+
     override suspend fun getPosts(): Response<List<PostModel>> =
         api.getPosts()
 
@@ -66,10 +71,6 @@ class NetworkRepository(private val api: Api) : Repository {
         api.tokenDeviceId(TokenDevice(id = id,tokenDevice = tokenDevice))
 
 
-    override suspend fun authenticate(login: String, password: String): Response<Token> {
-        token = api.authenticate(AuthRequestParams(username = login, password = password)).body()?.token
-        return api.authenticate(AuthRequestParams(username = login, password = password))
-    }
 
     override suspend fun register(login: String, password: String): Response<Token> =
         api.register(RegistrationRequestParams(username = login, password = password))

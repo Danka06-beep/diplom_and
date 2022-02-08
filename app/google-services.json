@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "262672320188",
+    "project_id": "nirvana-38561",
+    "storage_bucket": "nirvana-38561.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262672320188:android:3b491fc6bdf805e75532b9",
+        "android_client_info": {
+          "package_name": "com.kuzmin.nirvana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "262672320188-i31ig7oa0ugekr90lnbqc87c5bs0tarb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYpEFnNnLepJlkfFMDS6_gNPieGZ7nK1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "262672320188-i31ig7oa0ugekr90lnbqc87c5bs0tarb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

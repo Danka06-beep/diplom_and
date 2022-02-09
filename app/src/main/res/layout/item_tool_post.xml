@@ -54,66 +54,70 @@
         app:layout_constraintTop_toBottomOf="@+id/avatar"
         tools:text="HELLO WORLD!" />
 
-    <ImageButton
-        android:id="@+id/likeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="44dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_baseline_favorite_false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
-
     <TextView
         android:id="@+id/likeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="6dp"
         android:text="0"
         app:layout_constraintEnd_toStartOf="@+id/likeBtn"
         app:layout_constraintTop_toBottomOf="@+id/content" />
-
-    <ImageButton
-        android:id="@+id/commentBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_baseline_comment_24"
-        app:layout_constraintStart_toEndOf="@+id/likeBtn"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
-
-    <TextView
-        android:id="@+id/commentsTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        app:layout_constraintEnd_toStartOf="@+id/commentBtn"
-        app:layout_constraintTop_toBottomOf="@+id/text"
-        tools:text="0" />
 
 
     <ImageButton
         android:id="@+id/shareBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="40dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_share_24"
-        app:layout_constraintStart_toEndOf="@+id/commentBtn"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/content" />
 
     <TextView
         android:id="@+id/repostsTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toStartOf="@+id/shareBtn"
         app:layout_constraintTop_toBottomOf="@+id/text"
         tools:text="3" />
+
+    <ImageButton
+        android:id="@+id/likeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_baseline_thumb_up_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content" />
+
+    <ImageButton
+        android:id="@+id/dislikeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/transparent"
+
+        android:src="@drawable/ic_baseline_thumb_down_false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content" />
+
+    <TextView
+        android:id="@+id/dislikeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="6dp"
+        android:text="0"
+        app:layout_constraintEnd_toStartOf="@+id/dislikeBtn"
+        app:layout_constraintTop_toBottomOf="@+id/content" />
 
     <FrameLayout
         android:id="@+id/content"

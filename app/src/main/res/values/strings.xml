@@ -24,9 +24,13 @@
     <string name="error_occured">Произошла ошибка</string>
     <string name="post_created_successfully">Пост создан</string>
     <string name="error_upload">Ошибка в загрузке изображения</string>
-    <string name="change_password">Забыли пароль?</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="forgot_password">Смена пароля</string>
     <string name="enter_phone_number">Введите свой номер телефона</string>
-
+    <string name="uploading_profile_photo">Загрузить или изменить  фото профиля -> </string>
+    <string name="change_your_profile_photo">Изменить фото профиля </string>
+    <string name="new_password"> Введите новый пароль </string>
+    <string name="repeat_new_password"> Повторите новый пароль </string>
 
 
 </resources>

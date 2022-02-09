@@ -24,17 +24,17 @@ import kotlinx.coroutines.launch
 class PostActivity : AppCompatActivity()  ,
     PostAdapter.OnLikeBtnClickListener, PostAdapter.OnRepostsBtnClickListener,
     PostAdapter.OnLoadMoreBtnClickListener {
+
     private var dialog: ProgressDialog? = null
     var myadapter = PostAdapter(ArrayList<PostModel>())
     var items = ArrayList<PostModel>()
-    val id = intent.getStringExtra("id")
-    val popMenu = PopupMenu(this,fab)
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
+
+        val id = intent.getStringExtra("id")
+        val popMenu = PopupMenu(this,fab)
 
         popMenu.menuInflater.inflate(R.menu.popup_menu,popMenu.menu)
         popMenu.setOnMenuItemClickListener { menuItem ->
@@ -45,8 +45,6 @@ class PostActivity : AppCompatActivity()  ,
             if(id == R.id.createPost){
                 goToNewPost()
             }
-
-
             false
         }
 

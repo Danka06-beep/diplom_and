@@ -23,7 +23,6 @@ class PostAdapter (val list: MutableList<PostModel>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var likeBtnClickListener: OnLikeBtnClickListener? = null
     var repostsBtnClickListener: OnRepostsBtnClickListener? = null
-    var loadMoreBtnClickListener: OnLoadMoreBtnClickListener? = null
     private val ITEM_TYPE_POST = 1
     private val ITEM_TYPE_REPOST = 2
     private val ITEM_FOOTER = 3;

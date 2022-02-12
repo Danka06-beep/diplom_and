@@ -2,7 +2,6 @@ package com.kuzmin.nirvana.Adapter
 
 import android.app.AlertDialog
 import android.content.Context
-import android.graphics.Color.red
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kuzmin.nirvana.R
+import com.kuzmin.nirvana.dto.LikeDislikeDto
 import com.kuzmin.nirvana.model.PostModel
 import kotlinx.android.synthetic.main.activity_repost.*
 import kotlinx.android.synthetic.main.item_tool_post.view.*
@@ -19,9 +19,10 @@ import kotlinx.android.synthetic.main.item_tool_post.view.repostsTv
 import kotlinx.android.synthetic.main.item_tool_post.view.shareBtn
 import kotlinx.android.synthetic.main.item_tool_repost.view.*
 
-class PostAdapter (val list: MutableList<PostModel>) :
+class PostAdapter(val list: MutableList<LikeDislikeDto>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var likeBtnClickListener: OnLikeBtnClickListener? = null
+    var dislikeBtnClickListener: OnDisLikeBtnClickListener? = null
     var repostsBtnClickListener: OnRepostsBtnClickListener? = null
     private val ITEM_TYPE_POST = 1
     private val ITEM_TYPE_REPOST = 2
@@ -67,6 +68,9 @@ class PostAdapter (val list: MutableList<PostModel>) :
         }
     }
 
+    interface OnDisLikeBtnClickListener {
+        fun onDisLikeBtnClicked(item: PostModel, position: Int)
+    }
 
 
     interface OnLikeBtnClickListener {
@@ -109,6 +113,17 @@ class RepostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.View
                     }
                 }
             }
+            dislikeBtn.setOnClickListener {
+                val currentPositionUs = adapterPosition
+                if (currentPositionUs != RecyclerView.NO_POSITION) {
+                    val item = adapter.list[currentPositionUs]
+                    if (item.dislikeActionPerforming) {
+                        context.getString(R.string.progress)
+                    } else {
+                        adapter.dislikeBtnClickListener?.onDisLikeBtnClicked(item, currentPositionUs)
+                    }
+                }
+            }
         }
     }
 
@@ -118,20 +133,34 @@ class RepostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.View
             contentRp.text = post.txt
             contentTv.text = post.repost?.txt
             likesTv.text = post.likeTxt.toString()
+            dislikeTxtTv.text = post.dislikeTxt.toString()
             repostsTv.text = post.shareTxt.toString()
             autorRP.text = post.author
 
             when {
-                post.likeActionPerforming -> likeBtn.setImageResource(R.drawable.ic_baseline_favorite_true)
+                post.likeActionPerforming -> likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_true)
                 post.like -> {
-                    likeBtn.setImageResource(R.drawable.ic_baseline_favorite_true)
+                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_true)
+                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.green))
+                }
+                else -> {
+                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_24)
+                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.black))
+                }
+            }
+
+            when {
+                post.dislikeActionPerforming -> likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_true)
+                post.dislike -> {
+                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_true)
                     likesTv.setTextColor(ContextCompat.getColor(context, R.color.red))
                 }
                 else -> {
-                    likeBtn.setImageResource(R.drawable.ic_baseline_favorite_false)
-                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.grey))
+                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_false)
+                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.black))
                 }
             }
+
             when {
                 post.repostActionPerforming -> {
                     shareBtn.setImageResource(R.drawable.ic_baseline_share_active)
@@ -165,6 +194,19 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
                     }
                 }
             }
+
+            dislikeBtn.setOnClickListener {
+                val currentPositionUs = adapterPosition
+                if (currentPositionUs != RecyclerView.NO_POSITION) {
+                    val item = adapter.list[currentPositionUs]
+                    if (item.dislikeActionPerforming) {
+                        context.getString(R.string.progress)
+                    } else {
+                        adapter.dislikeBtnClickListener?.onDisLikeBtnClicked(item, currentPositionUs)
+                    }
+                }
+            }
+
             shareBtn.setOnClickListener {
                 val currentPosition = adapterPosition
                 if (currentPosition != RecyclerView.NO_POSITION) {
@@ -189,20 +231,34 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
         with(itemView) {
             authorTv.text = post.author
             contentTv.text = post.txt
+            dislikeTxtTv.text = post.dislikeTxt.toString()
             likesTv.text = post.likeTxt.toString()
             repostsTv.text = post.shareTxt.toString()
 
             when {
-                post.likeActionPerforming -> likeBtn.setImageResource(R.drawable.ic_baseline_favorite_true)
+                post.likeActionPerforming -> likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_true)
                 post.like -> {
-                    likeBtn.setImageResource(R.drawable.ic_baseline_favorite_true)
+                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_true)
+                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.green))
+                }
+                else -> {
+                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_24)
+                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.black))
+                }
+            }
+
+            when {
+                post.dislikeActionPerforming -> likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_true)
+                post.dislike -> {
+                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_true)
                     likesTv.setTextColor(ContextCompat.getColor(context, R.color.red))
                 }
                 else -> {
-                    likeBtn.setImageResource(R.drawable.ic_baseline_favorite_true)
-                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.grey))
+                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_false)
+                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.black))
                 }
             }
+
             when {
                 post.repostActionPerforming -> {
                     shareBtn.setImageResource(R.drawable.ic_baseline_share_24)

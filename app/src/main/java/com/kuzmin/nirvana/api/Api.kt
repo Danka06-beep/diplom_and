@@ -5,7 +5,6 @@ import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
-
 data class AuthRequestParams(val username: String, val password: String)
 
 data class Token(val token: String)
@@ -36,24 +35,37 @@ interface Api {
     suspend fun changePassword(@Body changePasswordRequestParams: ChangePassword): Response<ChangePassword>
 
     @Multipart
+
     @POST("api/v1/media")
     suspend fun uploadImage(@Part file: MultipartBody.Part): Response<PostModel.AttachmentModel>
+
     @GET("api/v1/posts")
     suspend fun getPosts(): Response<List<PostModel>>
+
+    @POST("api/v1/changeImage")
+    suspend fun uploadImageUser(@Part file: MultipartBody.Part): Response<PostModel.AttachmentModel>
+
     @POST("api/v1/{id}/like")
     suspend fun likedByMe(@Path("id") id: Long): Response<PostModel>
-    @DELETE("api/v1/{id}/like")
-    suspend fun cancelMyLike(@Path("id") id: Long): Response<PostModel>
+
+    @POST("api/v1/{id}/dislike")
+    suspend fun dislike(@Path("id") id: Long): Response<PostModel>
+
     @POST("api/v1/new")
     suspend fun createPost(@Body createPostRequest: CreatePostRequest): Response<Void>
+
     @POST("api/v1/repost")
     suspend fun createRepost(@Body createRepostRequest: CreateRepostRequest): Response<Void>
+
     @POST("api/v1/posts/After")
     suspend fun getPostsAfter(@Body id:Long): Response<List<PostModel>>
+
     @POST("api/v1/old")
     suspend fun getPostsOld(@Body id:Long): Response<List<PostModel>>
+
     @POST("api/v1/push")
     suspend fun registerPushToken(@Header("Authorization") token: String, @Body pushRequestParams: PushRequestParams): Response<User>
+
     @GET("api/v1/{id}")
     suspend fun getPostId(@Path("id") id: Long): Response<PostModel>
 }

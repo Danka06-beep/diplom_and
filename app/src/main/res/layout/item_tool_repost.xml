@@ -79,17 +79,17 @@
         android:text="0"
         android:textColor="#ff0000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/dislikeBtn"
+        app:layout_constraintEnd_toStartOf="@id/dislikeBtnTv"
         app:layout_constraintTop_toBottomOf="@+id/contentTv"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/dislikeBtn"
+        android:id="@+id/dislikeBtnTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_thumb_down_false"
         android:background="@android:color/transparent"
-        app:layout_constraintEnd_toStartOf="@+id/dislikeTxt"
+        app:layout_constraintEnd_toStartOf="@+id/dislikeTxtTv"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintTop_toBottomOf="@+id/contentTv"
@@ -97,7 +97,7 @@
         />
 
     <TextView
-        android:id="@+id/dislikeTxt"
+        android:id="@+id/dislikeTxtTv"
         tools:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

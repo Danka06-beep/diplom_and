@@ -4,7 +4,6 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -23,7 +22,7 @@ import kotlinx.coroutines.launch
 
 class PostActivity : AppCompatActivity()  ,
     PostAdapter.OnLikeBtnClickListener, PostAdapter.OnRepostsBtnClickListener,
-    PostAdapter.OnLoadMoreBtnClickListener {
+    PostAdapter.OnLoadMoreBtnClickListener, PostAdapter.OnDisLikeBtnClickListener {
 
     private var dialog: ProgressDialog? = null
     var myadapter = PostAdapter(ArrayList<PostModel>())
@@ -62,6 +61,9 @@ class PostActivity : AppCompatActivity()  ,
         swipeContainer.setOnRefreshListener {
             refreshData()
         }
+        likeAndDslikeResultBtn.setOnClickListener {
+            goToViewLike()
+        }
         date()
     }
 
@@ -93,6 +95,7 @@ class PostActivity : AppCompatActivity()  ,
                     adapter = myadapter.apply {
                         likeBtnClickListener = this@PostActivity
                         repostsBtnClickListener = this@PostActivity
+                        dislikeBtnClickListener = this@PostActivity
                     }
                     myadapter.newRecentPosts(items)
                 }
@@ -107,7 +110,7 @@ class PostActivity : AppCompatActivity()  ,
             with(container) {
                 adapter?.notifyItemChanged(position)
                 val response = if (item.like) {
-                    App.repository.cancelMyLike(item.id)
+                    App.repository.dislike(item.id)
                 } else {
                     App.repository.likedByMe(item.id)
                 }
@@ -122,8 +125,29 @@ class PostActivity : AppCompatActivity()  ,
 
     }
 
-    override fun onRepostsBtnClicked(item: PostModel, position: Int, it: String) {
+    override fun onDisLikeBtnClicked(item: PostModel, position: Int) {
+        lifecycleScope.launch {
+            item.dislikeActionPerforming = true
+            with(container) {
+                adapter?.notifyItemChanged(position)
+                val response = if (item.dislike) {
+                    App.repository.dislike(item.id)
+                } else {
+                    App.repository.likedByMe(item.id)
+                }
+                item.dislikeActionPerforming = false
+                if (response.isSuccessful) {
+                    item.updatePost(response.body()!!)
+                }
+                adapter?.notifyItemChanged(position)
+            }
 
+        }
+
+    }
+
+
+    override fun onRepostsBtnClicked(item: PostModel, position: Int, it: String) {
         lifecycleScope.launch {
             item.repostActionPerforming = true
             with(container) {
@@ -135,6 +159,12 @@ class PostActivity : AppCompatActivity()  ,
         }
 
     }
+
+    fun goToViewLike() {
+        val intent = Intent(this@PostActivity, LikeActivity::class.java)
+        startActivity(intent)
+    }
+
 
 
     override fun onDestroy() {

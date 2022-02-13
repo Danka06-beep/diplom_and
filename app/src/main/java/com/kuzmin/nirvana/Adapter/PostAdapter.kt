@@ -297,5 +297,5 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
             .load(imageUrl)
             .into(photoImg)
     }
-
+//
 }

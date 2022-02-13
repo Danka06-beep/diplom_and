@@ -23,7 +23,8 @@ data class PostModel(val id: Long = 0,
                       var hidePost: Boolean = false,
                       var viewPost: Long = 0,
                       val repost: PostModel? = null,
-                      val attachment: AttachmentModel?) {
+                      val attachment: AttachmentModel?)
+{
 
      var likeActionPerforming = false
      var dislikeActionPerforming = false

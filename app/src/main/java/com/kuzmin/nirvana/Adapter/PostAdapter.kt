@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.item_tool_post.view.repostsTv
 import kotlinx.android.synthetic.main.item_tool_post.view.shareBtn
 import kotlinx.android.synthetic.main.item_tool_repost.view.*
 
-class PostAdapter(val list: MutableList<LikeDislikeDto>) :
+class PostAdapter(val list: MutableList<PostModel>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var likeBtnClickListener: OnLikeBtnClickListener? = null
     var dislikeBtnClickListener: OnDisLikeBtnClickListener? = null

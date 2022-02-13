@@ -5,6 +5,8 @@ import com.kuzmin.nirvana.api.ChangePassword
 import com.kuzmin.nirvana.api.Me
 import com.kuzmin.nirvana.api.Token
 import com.kuzmin.nirvana.api.User
+import com.kuzmin.nirvana.dto.AuthorPostResponseDto
+import com.kuzmin.nirvana.dto.PasswordChangeRequestDto
 import com.kuzmin.nirvana.model.PostModel
 import retrofit2.Response
 
@@ -23,6 +25,8 @@ interface Repository {
     suspend fun upload(bitmap: Bitmap): Response<PostModel.AttachmentModel>
     suspend fun uploadImageUser(bitmapUser: Bitmap): Response<PostModel.AttachmentModel>
 
+    suspend fun changeImageUser(attachment: PostModel.AttachmentModel): Response<PostModel.AttachmentModel>
+
     suspend fun registerPushToken(token: String) : Response<User>
 
     suspend fun getPostId(id: Long): Response<PostModel>
@@ -35,6 +39,6 @@ interface Repository {
 
     suspend fun register(login: String, password: String): Response<Token>
 
-    suspend fun changePassword(password: String, passwordrepeat: String): Response<ChangePassword>
+    suspend fun changePassword(passwordChangeRequestDto: PasswordChangeRequestDto):  Response<AuthorPostResponseDto>
 
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserActivity">
+    tools:context=".UserActivity"
+    android:background="#3061a1">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -71,7 +72,7 @@
 
 
     <Button
-        android:id="@+id/buttonChangePassword"
+        android:id="@+id/ChangePasswordBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -95,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <ImageView
-        android:id="@+id/attachPhotoDoneImgSetting"
+        android:id="@+id/imgSeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -117,7 +118,7 @@
         app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
     <Button
-        android:id="@+id/buttonChangePhoto"
+        android:id="@+id/ChangeAvatarBtn"
         android:layout_width="130dp"
         android:layout_height="54dp"
         android:layout_marginStart="162dp"

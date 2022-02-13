@@ -1,5 +1,7 @@
 package com.kuzmin.nirvana.api
 
+import com.kuzmin.nirvana.dto.AuthorPostResponseDto
+import com.kuzmin.nirvana.dto.PasswordChangeRequestDto
 import com.kuzmin.nirvana.model.PostModel
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -32,7 +34,7 @@ interface Api {
     suspend fun register(@Body registrationRequestParams: RegistrationRequestParams): Response<Token>
 
     @POST("api/v1/changePassword")
-    suspend fun changePassword(@Body changePasswordRequestParams: ChangePassword): Response<ChangePassword>
+    suspend fun changePassword(@Body passwordChangeRequestDto: PasswordChangeRequestDto): Response<AuthorPostResponseDto>
 
     @Multipart
 
@@ -42,8 +44,11 @@ interface Api {
     @GET("api/v1/posts")
     suspend fun getPosts(): Response<List<PostModel>>
 
-    @POST("api/v1/changeImage")
+    @POST("api/v1/mediaUser")
     suspend fun uploadImageUser(@Part file: MultipartBody.Part): Response<PostModel.AttachmentModel>
+
+    @POST("api/v1/changeImage")
+    suspend fun changeImageUser(@Body attachment: PostModel.AttachmentModel): Response<PostModel.AttachmentModel>
 
     @POST("api/v1/{id}/like")
     suspend fun likedByMe(@Path("id") id: Long): Response<PostModel>
@@ -58,7 +63,7 @@ interface Api {
     suspend fun createRepost(@Body createRepostRequest: CreateRepostRequest): Response<Void>
 
     @POST("api/v1/posts/After")
-    suspend fun getPostsAfter(@Body id:Long): Response<List<PostModel>>
+    suspend fun getPostsAfter(@Body id:Long): Response<PostModel>
 
     @POST("api/v1/old")
     suspend fun getPostsOld(@Body id:Long): Response<List<PostModel>>

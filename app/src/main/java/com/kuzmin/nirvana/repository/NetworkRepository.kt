@@ -2,6 +2,8 @@ package com.kuzmin.nirvana.repository
 
 import android.graphics.Bitmap
 import com.kuzmin.nirvana.api.*
+import com.kuzmin.nirvana.dto.AuthorPostResponseDto
+import com.kuzmin.nirvana.dto.PasswordChangeRequestDto
 import com.kuzmin.nirvana.model.PostModel
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -36,7 +38,7 @@ class NetworkRepository(private val api: Api) : Repository {
             repostTxt = contentRepost,
             id = contentRepost.id))
 
-    override suspend fun getPostsAfter(id: Long): Response<List<PostModel>> =
+    override suspend fun getPostsAfter(id: Long): Response<PostModel> =
         api.getPostsAfter(id)
 
     override suspend fun getPostsOld(id: Long): Response<List<PostModel>> =
@@ -62,6 +64,10 @@ class NetworkRepository(private val api: Api) : Repository {
         return api.uploadImageUser(body)
     }
 
+    override suspend fun changeImageUser(attachment: PostModel.AttachmentModel): Response<PostModel.AttachmentModel> =
+        api.changeImageUser(attachment)
+
+
     override suspend fun registerPushToken(token: String): Response<User> = api.registerPushToken(this.token!!, PushRequestParams(token))
 
     override suspend fun getPostId(id: Long): Response<PostModel> =  api.getPostId(id)
@@ -74,8 +80,9 @@ class NetworkRepository(private val api: Api) : Repository {
     override suspend fun register(login: String, password: String): Response<Token> =
         api.register(RegistrationRequestParams(username = login, password = password))
 
-    override suspend fun changePassword(password: String,passwordrepeat: String): Response<ChangePassword> =
-       api.changePassword(ChangePassword(password = password, passwordrepeat = passwordrepeat))
+    override suspend fun changePassword(passwordChangeRequestDto: PasswordChangeRequestDto): Response<AuthorPostResponseDto> =
+        api.changePassword(passwordChangeRequestDto)
+
 
 
 }

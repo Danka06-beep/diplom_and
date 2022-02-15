@@ -9,6 +9,7 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.kuzmin.nirvana.R
 import com.kuzmin.nirvana.dto.LikeDislikeDto
 import com.kuzmin.nirvana.model.PostModel
@@ -102,7 +103,7 @@ class PostAdapter(val list: MutableList<PostModel>) :
 class RepostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHolder(view) {
     init {
         with(itemView) {
-            likeBtn.setOnClickListener {
+            likeBtnTv.setOnClickListener {
                 val currentPosition = adapterPosition
                 if (currentPosition != RecyclerView.NO_POSITION) {
                     val item = adapter.list[currentPosition]
@@ -113,7 +114,7 @@ class RepostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.View
                     }
                 }
             }
-            dislikeBtn.setOnClickListener {
+            dislikeBtnTv.setOnClickListener {
                 val currentPositionUs = adapterPosition
                 if (currentPositionUs != RecyclerView.NO_POSITION) {
                     val item = adapter.list[currentPositionUs]
@@ -138,26 +139,26 @@ class RepostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.View
             autorRP.text = post.author
 
             when {
-                post.likeActionPerforming -> likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_true)
+                post.likeActionPerforming -> likeBtnTv.setImageResource(R.drawable.ic_baseline_thumb_up_true)
                 post.like -> {
-                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_true)
+                    likeBtnTv.setImageResource(R.drawable.ic_baseline_thumb_up_true)
                     likesTv.setTextColor(ContextCompat.getColor(context, R.color.green))
                 }
                 else -> {
-                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_24)
+                    likeBtnTv.setImageResource(R.drawable.ic_baseline_thumb_up_24)
                     likesTv.setTextColor(ContextCompat.getColor(context, R.color.black))
                 }
             }
 
             when {
-                post.dislikeActionPerforming -> likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_true)
+                post.dislikeActionPerforming -> dislikeBtnTv.setImageResource(R.drawable.ic_baseline_thumb_down_true)
                 post.dislike -> {
-                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_true)
-                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.red))
+                    dislikeBtnTv.setImageResource(R.drawable.ic_baseline_thumb_down_true)
+                    dislikeTxtTv.setTextColor(ContextCompat.getColor(context, R.color.red))
                 }
                 else -> {
-                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_false)
-                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.black))
+                    dislikeBtnTv.setImageResource(R.drawable.ic_baseline_thumb_down_false)
+                    dislikeTxtTv.setTextColor(ContextCompat.getColor(context, R.color.black))
                 }
             }
 
@@ -229,33 +230,33 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
 
     fun bind(post: PostModel) {
         with(itemView) {
-            authorTv.text = post.author
-            contentTv.text = post.txt
-            dislikeTxtTv.text = post.dislikeTxt.toString()
-            likesTv.text = post.likeTxt.toString()
+            author.text = post.author
+            text.text = post.txt
+            dislikeTxt.text = post.dislikeTxt.toString()
+            likeTxt.text = post.likeTxt.toString()
             repostsTv.text = post.shareTxt.toString()
 
             when {
                 post.likeActionPerforming -> likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_true)
                 post.like -> {
                     likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_true)
-                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.green))
+                    likeTxt.setTextColor(ContextCompat.getColor(context, R.color.green))
                 }
                 else -> {
                     likeBtn.setImageResource(R.drawable.ic_baseline_thumb_up_24)
-                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.black))
+                    likeTxt.setTextColor(ContextCompat.getColor(context, R.color.black))
                 }
             }
 
             when {
-                post.dislikeActionPerforming -> likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_true)
+                post.dislikeActionPerforming -> dislikeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_true)
                 post.dislike -> {
-                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_true)
-                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.red))
+                    dislikeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_true)
+                    dislikeTxt.setTextColor(ContextCompat.getColor(context, R.color.red))
                 }
                 else -> {
-                    likeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_false)
-                    likesTv.setTextColor(ContextCompat.getColor(context, R.color.black))
+                    dislikeBtn.setImageResource(R.drawable.ic_baseline_thumb_down_false)
+                    dislikeTxt.setTextColor(ContextCompat.getColor(context, R.color.black))
                 }
             }
 
@@ -293,6 +294,9 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
     }
 
     private fun loadImage(photoImg: ImageView, imageUrl: String) {
+        val requestOptionsCompat =  RequestOptions()
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.common_google_signin_btn_icon_dark)
         Glide.with(photoImg.context)
             .load(imageUrl)
             .into(photoImg)

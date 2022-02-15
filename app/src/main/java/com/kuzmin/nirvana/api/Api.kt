@@ -32,8 +32,7 @@ interface Api {
     @POST("api/v1/registration")
     suspend fun register(@Body registrationRequestParams: RegistrationRequestParams): Response<Token>
 
-    @POST("api/v1/changePassword")
-    suspend fun changePassword(@Body passwordChangeRequestDto: PasswordChangeRequestDto): Response<AuthorPostResponseDto>
+
 
     @Multipart
     @POST("api/v1/media")
@@ -42,11 +41,16 @@ interface Api {
     @GET("api/v1/posts")
     suspend fun getPosts(): Response<List<PostModel>>
 
+    @Multipart
     @POST("api/v1/mediaUser")
     suspend fun uploadImageUser(@Part file: MultipartBody.Part): Response<PostModel.AttachmentUserModel>
 
     @POST("api/v1/changeImage")
     suspend fun changeImageUser(@Body attachment: PostModel.AttachmentUserModel): Response<PostModel.AttachmentUserModel>
+
+    @POST("api/v1/changePassword")
+    suspend fun changePassword(@Body passwordChangeRequestDto: PasswordChangeRequestDto): Response<AuthorPostResponseDto>
+
 
     @POST("api/v1/{id}/like")
     suspend fun likedByMe(@Path("id") id: Long): Response<PostModel>

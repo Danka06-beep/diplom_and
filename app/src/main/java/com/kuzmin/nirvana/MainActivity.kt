@@ -71,7 +71,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 
     private fun goToPost() {

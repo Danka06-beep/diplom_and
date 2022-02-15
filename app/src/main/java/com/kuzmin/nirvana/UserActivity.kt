@@ -75,7 +75,7 @@ class UserActivity : AppCompatActivity() {
                 !isValidPassword(password) -> {
                     Toast.makeText(this@UserActivity, "Не коректный пароль", Toast.LENGTH_SHORT).show()
                 }
-                !(password == twoPassword) -> {
+                (password == twoPassword) -> {
                     Toast.makeText(this@UserActivity, "Пароли не совпадают", Toast.LENGTH_SHORT).show()
                 }
                 password == "" -> {
@@ -112,10 +112,10 @@ class UserActivity : AppCompatActivity() {
     }
     private fun imageUploaded() {
         transparetAllIcons()
-        attachPhotoDoneImg.visibility = View.VISIBLE
+        attachPhotoImgSetting.visibility = View.VISIBLE
     }
     private fun transparetAllIcons() {
-        attachPhotoImg.setImageResource(R.drawable.ic_baseline_image_true)
+        imgSeting.setImageResource(R.drawable.ic_baseline_image_true)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

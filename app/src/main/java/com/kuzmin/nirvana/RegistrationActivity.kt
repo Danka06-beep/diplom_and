@@ -20,6 +20,7 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_registration)
 
         btnRegistration.setOnClickListener {
+
             lifecycleScope.launch {
                 val login = registrationLogin.text?.toString().orEmpty()
                 val password = registrationPassword.text?.toString().orEmpty()
@@ -63,7 +64,6 @@ class RegistrationActivity : AppCompatActivity() {
                             Toast.makeText(this@RegistrationActivity, getString(R.string.erorConnect), Toast.LENGTH_LONG).show()
                             dialog?.dismiss()
                         }
-
                     }
                 }
             }

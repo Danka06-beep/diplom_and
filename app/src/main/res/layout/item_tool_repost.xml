@@ -58,7 +58,7 @@
         android:textColor="@android:color/black"/>
 
     <ImageButton
-        android:id="@+id/likeBtn"
+        android:id="@+id/likeBtnTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

@@ -1,7 +1,6 @@
 package com.kuzmin.nirvana.repository
 
 import android.graphics.Bitmap
-import com.kuzmin.nirvana.api.ChangePassword
 import com.kuzmin.nirvana.api.Me
 import com.kuzmin.nirvana.api.Token
 import com.kuzmin.nirvana.api.User
@@ -23,9 +22,9 @@ interface Repository {
     suspend fun getPostsOld(id: Long): Response<List<PostModel>>
 
     suspend fun upload(bitmap: Bitmap): Response<PostModel.AttachmentModel>
-    suspend fun uploadImageUser(bitmapUser: Bitmap): Response<PostModel.AttachmentModel>
+    suspend fun uploadImageUser(bitmapUser: Bitmap): Response<PostModel.AttachmentUserModel>
 
-    suspend fun changeImageUser(attachment: PostModel.AttachmentModel): Response<PostModel.AttachmentModel>
+    suspend fun changeImageUser(attachment: PostModel.AttachmentUserModel): Response<PostModel.AttachmentUserModel>
 
     suspend fun registerPushToken(token: String) : Response<User>
 

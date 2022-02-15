@@ -17,7 +17,6 @@ data class TokenDevice(val id: Long,val tokenDevice: String)
 
 data class Me(val id: Long = 0,val name: String)
 
-data class ChangePassword(val password: String, val passwordrepeat: String)
 
 interface Api {
 
@@ -37,7 +36,6 @@ interface Api {
     suspend fun changePassword(@Body passwordChangeRequestDto: PasswordChangeRequestDto): Response<AuthorPostResponseDto>
 
     @Multipart
-
     @POST("api/v1/media")
     suspend fun uploadImage(@Part file: MultipartBody.Part): Response<PostModel.AttachmentModel>
 
@@ -45,10 +43,10 @@ interface Api {
     suspend fun getPosts(): Response<List<PostModel>>
 
     @POST("api/v1/mediaUser")
-    suspend fun uploadImageUser(@Part file: MultipartBody.Part): Response<PostModel.AttachmentModel>
+    suspend fun uploadImageUser(@Part file: MultipartBody.Part): Response<PostModel.AttachmentUserModel>
 
     @POST("api/v1/changeImage")
-    suspend fun changeImageUser(@Body attachment: PostModel.AttachmentModel): Response<PostModel.AttachmentModel>
+    suspend fun changeImageUser(@Body attachment: PostModel.AttachmentUserModel): Response<PostModel.AttachmentUserModel>
 
     @POST("api/v1/{id}/like")
     suspend fun likedByMe(@Path("id") id: Long): Response<PostModel>

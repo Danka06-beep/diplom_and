@@ -61,9 +61,9 @@ class PostActivity : AppCompatActivity()  ,
         swipeContainer.setOnRefreshListener {
             refreshData()
         }
-        likeAndDslikeResultBtn.setOnClickListener {
+        /*likeAndDslikeResultBtn.setOnClickListener {
             goToViewLike()
-        }
+        }*/
         date()
     }
 

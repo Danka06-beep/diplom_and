@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -19,7 +20,9 @@ import com.kuzmin.nirvana.model.PostModel
 import com.kuzmin.nirvana.other.Helper
 import com.kuzmin.nirvana.other.isValidPassword
 import kotlinx.android.synthetic.main.activity_create_post.*
+import kotlinx.android.synthetic.main.activity_like.*
 import kotlinx.android.synthetic.main.activity_user.*
+import kotlinx.android.synthetic.main.activity_user.toolbar
 import kotlinx.android.synthetic.main.item_tool_post.*
 import kotlinx.coroutines.launch
 
@@ -33,6 +36,9 @@ class UserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
         val id = intent.getStringExtra("id")
             ChangeAvatarBtn.setOnClickListener {
                 changeAvatar()
@@ -162,6 +168,15 @@ class UserActivity : AppCompatActivity() {
             takePictureIntent.resolveActivity(packageManager)?.also {
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
             }
+        }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.getItemId()) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
         }

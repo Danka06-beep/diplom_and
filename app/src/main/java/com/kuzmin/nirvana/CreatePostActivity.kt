@@ -39,8 +39,6 @@ class CreatePostActivity : AppCompatActivity() {
             else {
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_CAMERA)
             }
-
-
         }
         createPostBtn.setOnClickListener {
             lifecycleScope.launch {

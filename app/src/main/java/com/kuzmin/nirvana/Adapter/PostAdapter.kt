@@ -31,6 +31,7 @@ class PostAdapter(val list: MutableList<PostModel>) :
     private val ITEM_FOOTER = 3;
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == ITEM_TYPE_POST) {
             val postView =

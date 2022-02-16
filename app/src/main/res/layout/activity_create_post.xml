@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".CreatePostActivity"
     android:background="#3061a1">
+
+
+
     <TextView
         android:id="@+id/createNewPostLabel"
         android:layout_width="0dp"

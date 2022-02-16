@@ -17,7 +17,7 @@
         android:src="@drawable/ic_baseline_account_circle_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_baseline_account_circle_24"/>
+        tools:srcCompat="@drawable/ic_launcher_background"/>
 
     <TextView
         android:id="@+id/created"

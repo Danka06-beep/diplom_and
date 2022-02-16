@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 
 class PostActivity : AppCompatActivity()  ,
     PostAdapter.OnLikeBtnClickListener, PostAdapter.OnRepostsBtnClickListener,
-    PostAdapter.OnLoadMoreBtnClickListener, PostAdapter.OnDisLikeBtnClickListener {
+    PostAdapter.OnLoadMoreBtnClickListener, PostAdapter.OnDisLikeBtnClickListener,PostAdapter.OnViewLikeClickListener {
 
     private var dialog: ProgressDialog? = null
     var myadapter = PostAdapter(ArrayList<PostModel>())
@@ -61,9 +61,6 @@ class PostActivity : AppCompatActivity()  ,
         swipeContainer.setOnRefreshListener {
             refreshData()
         }
-        /*likeAndDslikeResultBtn.setOnClickListener {
-            goToViewLike()
-        }*/
         date()
     }
 
@@ -96,6 +93,7 @@ class PostActivity : AppCompatActivity()  ,
                         likeBtnClickListener = this@PostActivity
                         repostsBtnClickListener = this@PostActivity
                         dislikeBtnClickListener = this@PostActivity
+                        viewLike = this@PostActivity
                     }
                     myadapter.newRecentPosts(items)
                 }
@@ -106,14 +104,14 @@ class PostActivity : AppCompatActivity()  ,
     }
     override fun onLikeBtnClicked(item: PostModel, position: Int) {
         lifecycleScope.launch {
-            item.likeActionPerforming = true
+
+            if(item.like || item.dislike){
+                Toast.makeText(this@PostActivity, "Вы уже поставили дизлайк ", Toast.LENGTH_SHORT).show()
+            }
             with(container) {
+                item.likeActionPerforming = true
                 adapter?.notifyItemChanged(position)
-                val response = if (item.like) {
-                    App.repository.dislike(item.id)
-                } else {
-                    App.repository.likedByMe(item.id)
-                }
+                val response = App.repository.likedByMe(item.id)
                 item.likeActionPerforming = false
                 if (response.isSuccessful) {
                     item.updatePost(response.body()!!)
@@ -122,19 +120,17 @@ class PostActivity : AppCompatActivity()  ,
             }
 
         }
-
     }
 
     override fun onDisLikeBtnClicked(item: PostModel, position: Int) {
         lifecycleScope.launch {
+            if(item.like || item.dislike){
+                Toast.makeText(this@PostActivity, "Вы уже поставили лайк", Toast.LENGTH_SHORT).show()
+            }
             item.dislikeActionPerforming = true
             with(container) {
                 adapter?.notifyItemChanged(position)
-                val response = if (item.dislike) {
-                    App.repository.dislike(item.id)
-                } else {
-                    App.repository.likedByMe(item.id)
-                }
+                val response = App.repository.dislike(item.id)
                 item.dislikeActionPerforming = false
                 if (response.isSuccessful) {
                     item.updatePost(response.body()!!)
@@ -143,7 +139,6 @@ class PostActivity : AppCompatActivity()  ,
             }
 
         }
-
     }
 
 
@@ -161,8 +156,7 @@ class PostActivity : AppCompatActivity()  ,
     }
 
     fun goToViewLike() {
-        val intent = Intent(this@PostActivity, LikeActivity::class.java)
-        startActivity(intent)
+
     }
 
 
@@ -214,6 +208,11 @@ class PostActivity : AppCompatActivity()  ,
             in 3600..17999 -> "$toMin часа назад"
             else -> "$toMin часов назад "
         }
+    }
+
+    override fun onViewLikeBtn(item: PostModel) {
+        val intent = Intent(this@PostActivity, LikeActivity::class.java)
+        startActivity(intent)
     }
 
 }

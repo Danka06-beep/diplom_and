@@ -25,10 +25,10 @@ class PostAdapter(val list: MutableList<PostModel>) :
     var likeBtnClickListener: OnLikeBtnClickListener? = null
     var dislikeBtnClickListener: OnDisLikeBtnClickListener? = null
     var repostsBtnClickListener: OnRepostsBtnClickListener? = null
+    var viewLike: OnViewLikeClickListener? = null
     private val ITEM_TYPE_POST = 1
     private val ITEM_TYPE_REPOST = 2
     private val ITEM_FOOTER = 3;
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -73,6 +73,9 @@ class PostAdapter(val list: MutableList<PostModel>) :
         fun onDisLikeBtnClicked(item: PostModel, position: Int)
     }
 
+    interface OnViewLikeClickListener {
+        fun onViewLikeBtn(item: PostModel)
+    }
 
     interface OnLikeBtnClickListener {
         fun onLikeBtnClicked(item: PostModel, position: Int)
@@ -225,6 +228,13 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
                     }
                 }
             }
+            likeAndDslikeResultBtn.setOnClickListener {
+                val currentPosition = adapterPosition
+                if (currentPosition != RecyclerView.NO_POSITION) {
+                    val item = adapter.list[currentPosition]
+                    adapter.viewLike?.onViewLikeBtn(item)
+                }
+            }
         }
     }
 
@@ -301,5 +311,5 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
             .load(imageUrl)
             .into(photoImg)
     }
-//
+
 }

@@ -19,6 +19,7 @@ class LikeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_like)
         loading()
+
     }
 
     private fun loading() {

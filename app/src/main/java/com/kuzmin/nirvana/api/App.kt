@@ -1,6 +1,7 @@
 package com.kuzmin.nirvana.api
 
 import android.app.Application
+import android.util.Log
 import com.kuzmin.nirvana.API_SHARED_FILE
 import com.kuzmin.nirvana.AUTHENTICATED_SHARED_KEY
 import com.kuzmin.nirvana.BASE_URL
@@ -21,7 +22,9 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        val httpLoggerInterceptor = HttpLoggingInterceptor()
+        val httpLoggerInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message ->
+            Log.d("MyLog", "okhttp: $message")
+        })
 
         httpLoggerInterceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder()

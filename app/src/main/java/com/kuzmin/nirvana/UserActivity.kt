@@ -44,8 +44,6 @@ class UserActivity : AppCompatActivity() {
             dispatchTakePictureIntent()
         }
         }
-
-
       private fun changeAvatar(){
           lifecycleScope.launch {
               try {
@@ -61,8 +59,6 @@ class UserActivity : AppCompatActivity() {
               }
           }
     }
-
-
     private fun changePassw(){
         lifecycleScope.launch {
             val password = passwordText.text?.toString().orEmpty()
@@ -107,7 +103,6 @@ class UserActivity : AppCompatActivity() {
                     }
                 }
             }
-
         }
     }
     private fun imageUploaded() {

@@ -54,7 +54,7 @@ class NetworkRepository(private val api: Api) : Repository {
     return api.uploadImage(body)
 }
 
-    override suspend fun uploadImageUser(bitmapUser: Bitmap): Response<PostModel.AttachmentUserModel> {
+    override suspend fun uploadImageUser(bitmapUser: Bitmap): Response<PostModel.AttachmentModel> {
         val bos = ByteArrayOutputStream()
         bitmapUser.compress(Bitmap.CompressFormat.JPEG, 100, bos)
         val reqFIle =
@@ -64,7 +64,7 @@ class NetworkRepository(private val api: Api) : Repository {
         return api.uploadImageUser(body)
     }
 
-    override suspend fun changeImageUser(attachment: PostModel.AttachmentUserModel): Response<PostModel.AttachmentUserModel> =
+    override suspend fun changeImageUser(attachment: PostModel.AttachmentModel): Response<PostModel.AttachmentModel> =
         api.changeImageUser(attachment)
 
 

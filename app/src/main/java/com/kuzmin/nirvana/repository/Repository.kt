@@ -22,9 +22,9 @@ interface Repository {
     suspend fun getPostsOld(id: Long): Response<List<PostModel>>
 
     suspend fun upload(bitmap: Bitmap): Response<PostModel.AttachmentModel>
-    suspend fun uploadImageUser(bitmapUser: Bitmap): Response<PostModel.AttachmentUserModel>
+    suspend fun uploadImageUser(bitmapUser: Bitmap): Response<PostModel.AttachmentModel>
 
-    suspend fun changeImageUser(attachment: PostModel.AttachmentUserModel): Response<PostModel.AttachmentUserModel>
+    suspend fun changeImageUser(attachment: PostModel.AttachmentModel): Response<PostModel.AttachmentModel>
 
     suspend fun registerPushToken(token: String) : Response<User>
 

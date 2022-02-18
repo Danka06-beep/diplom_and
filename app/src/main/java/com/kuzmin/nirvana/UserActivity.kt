@@ -29,7 +29,6 @@ import kotlinx.coroutines.launch
 class UserActivity : AppCompatActivity() {
     private var dialog: ProgressDialog? = null
     private var attachmentModel: PostModel.AttachmentModel? = null
-    private var attachmentModelUser: PostModel.AttachmentUserModel? = null
     val REQUEST_IMAGE_CAPTURE = 1
     private var  MY_PERMISSIONS_REQUEST_CAMERA = 100
 
@@ -40,9 +39,6 @@ class UserActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         val id = intent.getStringExtra("id")
-            ChangeAvatarBtn.setOnClickListener {
-                changeAvatar()
-            }
         ChangePasswordBtn.setOnClickListener {
             changePassw()
         }
@@ -50,21 +46,6 @@ class UserActivity : AppCompatActivity() {
             dispatchTakePictureIntent()
         }
         }
-      private fun changeAvatar(){
-          lifecycleScope.launch {
-              try {
-                  val use = App.repository.changeImageUser(attachment = attachmentModelUser!!)
-                  if (use.isSuccessful) {
-                      Toast.makeText(this@UserActivity, "Фото загружен", Toast.LENGTH_SHORT).show()
-                      imgSeting.visibility = View.GONE
-                      attachPhotoImgSetting.setImageResource(R.drawable.ic_baseline_image_24)
-                      attachmentModelUser = null
-                  }
-              } catch (e: Exception) {
-                  Toast.makeText(this@UserActivity, "Ошибка", Toast.LENGTH_SHORT).show()
-              }
-          }
-    }
     private fun changePassw(){
         lifecycleScope.launch {
             val password = passwordText.text?.toString().orEmpty()
@@ -137,7 +118,7 @@ class UserActivity : AppCompatActivity() {
                     dialog?.dismiss()
                     if (imageUploadResult.isSuccessful) {
                         imageUploaded()
-                        attachmentModelUser = imageUploadResult.body()
+                        attachmentModel = imageUploadResult.body()
                     } else {
                         Toast.makeText(this@UserActivity, getString(R.string.error_upload), Toast.LENGTH_LONG).show()
                     }

@@ -4,7 +4,7 @@ import com.kuzmin.nirvana.BASE_URL
 import com.kuzmin.nirvana.dto.LikeDislikeDto
 
 data class PostModel(val id: Long = 0,
-                      val author: String? = null,
+                      val author: UserModel? = null,
                       val data: Long = 0,
                       var txt: String? = null,
                       var like: Boolean = false,
@@ -55,9 +55,8 @@ data class PostModel(val id: Long = 0,
     data class AttachmentModel(val id: String, val mediaType: AttachmentType) {
         val url
             get() = "$BASE_URL/api/v1/static/$id"
-    }
-    data class AttachmentUserModel(val id: String, val mediaType: AttachmentType) {
-        val url
+        val urlUs
             get() = "$BASE_URL/api/v1/staticUs/$id"
     }
+
 }

@@ -43,14 +43,13 @@ interface Api {
 
     @Multipart
     @POST("api/v1/mediaUser")
-    suspend fun uploadImageUser(@Part file: MultipartBody.Part): Response<PostModel.AttachmentUserModel>
+    suspend fun uploadImageUser(@Part file: MultipartBody.Part): Response<PostModel.AttachmentModel>
 
     @POST("api/v1/changeImage")
-    suspend fun changeImageUser(@Body attachment: PostModel.AttachmentUserModel): Response<PostModel.AttachmentUserModel>
+    suspend fun changeImageUser(@Body attachment: PostModel.AttachmentModel): Response<PostModel.AttachmentModel>
 
     @POST("api/v1/changePassword")
     suspend fun changePassword(@Body passwordChangeRequestDto: PasswordChangeRequestDto): Response<AuthorPostResponseDto>
-
 
     @POST("api/v1/{id}/like")
     suspend fun likedByMe(@Path("id") id: Long): Response<PostModel>

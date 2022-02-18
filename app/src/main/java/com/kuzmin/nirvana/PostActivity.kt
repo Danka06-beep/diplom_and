@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.kuzmin.nirvana.Adapter.PostAdapter
 import com.kuzmin.nirvana.api.App
 import com.kuzmin.nirvana.model.PostModel
@@ -18,6 +19,7 @@ import com.kuzmin.nirvana.other.isFirstTime
 import com.kuzmin.nirvana.other.setNotFirstTime
 import kotlinx.android.synthetic.main.activity_post.*
 import kotlinx.android.synthetic.main.item_tool_post.*
+import kotlinx.android.synthetic.main.item_tool_post.view.*
 import kotlinx.coroutines.launch
 
 class PostActivity : AppCompatActivity()  ,
@@ -53,6 +55,8 @@ class PostActivity : AppCompatActivity()  ,
             when (post?.attachment?.mediaType) {
                 PostModel.AttachmentType.IMAGE -> loadImage(photoImg, post.attachment.url)
             }
+            when (post?.author?.attachment?.mediaType) {
+                PostModel.AttachmentType.IMAGE -> loadImage(avatar, post.author.attachment.urlUs) }
         }
         fab.setOnClickListener {
             popMenu.show()
@@ -183,12 +187,14 @@ class PostActivity : AppCompatActivity()  ,
 
     }
     private fun loadImage(photoImg: ImageView, imageUrl: String) {
-        Glide
-            .with(photoImg.context)
+        val requestOptionsCompat =  RequestOptions()
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.common_google_signin_btn_icon_dark)
+        Glide.with(photoImg.context)
             .load(imageUrl)
-            .centerCrop()
             .into(photoImg)
     }
+
 
 
 

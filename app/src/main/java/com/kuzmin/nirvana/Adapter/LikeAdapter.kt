@@ -39,7 +39,7 @@ class LikeAdapter(val likeList: MutableList<LikeDislikeDto>): RecyclerView.Adapt
                nameAuthor.text = likeDislikeDto.author.toString()
                date.text = likeDislikeDto.date.toString()
                when(likeDislikeDto.author.attachment?.mediaType){
-                   PostModel.AttachmentType.IMAGE -> loadImageAuthor(imageAutor,likeDislikeDto.author.attachment.url)
+                   PostModel.AttachmentType.IMAGE -> loadImageAuthor(imageAutor,likeDislikeDto.author.attachment.urlUs)
                }
                when(likeDislikeDto.type){
                    LikeType.Like -> {

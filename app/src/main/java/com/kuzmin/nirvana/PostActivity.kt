@@ -55,8 +55,7 @@ class PostActivity : AppCompatActivity()  ,
             when (post?.attachment?.mediaType) {
                 PostModel.AttachmentType.IMAGE -> loadImage(photoImg, post.attachment.url)
             }
-            when (post?.author?.attachment?.mediaType) {
-                PostModel.AttachmentType.IMAGE -> loadImage(avatar, post.author.attachment.urlUs) }
+
         }
         fab.setOnClickListener {
             popMenu.show()

@@ -27,7 +27,7 @@ data class PostResponseDto(val id: Long = 0,
     companion object {
         fun fromModel(model: PostModel) = PostResponseDto(
             id = model.id,
-            author = model.author?.username,
+            author = model.author,
             data = model.data,
             txt = model.txt,
             like = model.like,

@@ -4,6 +4,6 @@ data class UserModel(
     val id: Long = 0,
     val username: String? = null,
     val userStatus: Long = 0,
-    val attachment: PostModel.AttachmentModel? = null,
+    val attachment: PostModel.AttachmentModel?,
     val readOnly: Boolean = false,
     ){}

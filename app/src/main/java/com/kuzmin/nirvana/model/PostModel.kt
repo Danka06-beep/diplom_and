@@ -4,7 +4,7 @@ import com.kuzmin.nirvana.BASE_URL
 import com.kuzmin.nirvana.dto.LikeDislikeDto
 
 data class PostModel(val id: Long = 0,
-                      val author: UserModel? = null,
+                      val author: String? = null,
                       val data: Long = 0,
                       var txt: String? = null,
                       var like: Boolean = false,
@@ -23,7 +23,8 @@ data class PostModel(val id: Long = 0,
                       var hidePost: Boolean = false,
                       var viewPost: Long = 0,
                       val repost: PostModel? = null,
-                      val attachment: AttachmentModel?)
+                      val attachment: AttachmentModel?,
+                      val authorAttachment: UserModel? = null )
 {
 
      var likeActionPerforming = false

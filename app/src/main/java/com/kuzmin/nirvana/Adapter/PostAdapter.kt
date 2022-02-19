@@ -134,13 +134,13 @@ class RepostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.View
 
     fun bind(post: PostModel) {
         with(itemView) {
-            authorTv.text = post.repost?.author?.username
+            authorTv.text = post.repost?.author
             contentRp.text = post.txt
             contentTv.text = post.repost?.txt
             likesTv.text = post.likeTxt.toString()
             dislikeTxtTv.text = post.dislikeTxt.toString()
             repostsTv.text = post.shareTxt.toString()
-            autorRP.text = post.author?.username
+            autorRP.text = post.author
 
             when {
                 post.likeActionPerforming -> likeBtnTv.setImageResource(R.drawable.ic_baseline_thumb_up_true)
@@ -241,7 +241,7 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
 
     fun bind(post: PostModel) {
         with(itemView) {
-            author.text = post.author?.username
+            author.text = post.author
             text.text = post.txt
             dislikeTxt.text = post.dislikeTxt.toString()
             likeTxt.text = post.likeTxt.toString()
@@ -286,8 +286,9 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
             }
             when (post.attachment?.mediaType) {
                 PostModel.AttachmentType.IMAGE -> loadImage(photoImg, post.attachment.url) }
-            when (post.author?.attachment?.mediaType) {
-                PostModel.AttachmentType.IMAGE -> loadImage(avatar, post.author.attachment.url) }
+            when (post.authorAttachment?.attachment?.mediaType) {
+                PostModel.AttachmentType.IMAGE -> loadImage(avatar, post.authorAttachment.attachment.urlUs) }
+
         }
     }
 

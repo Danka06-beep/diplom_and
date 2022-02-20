@@ -106,7 +106,8 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic_eye"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 
     <ImageButton
         android:id="@+id/dislikeBtn"

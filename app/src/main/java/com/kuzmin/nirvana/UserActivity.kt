@@ -67,7 +67,7 @@ class UserActivity : AppCompatActivity() {
                 !isValidPassword(password) -> {
                     Toast.makeText(this@UserActivity, "Не коректный пароль", Toast.LENGTH_SHORT).show()
                 }
-                (password == twoPassword) -> {
+                !(password == twoPassword) -> {
                     Toast.makeText(this@UserActivity, "Пароли не совпадают", Toast.LENGTH_SHORT).show()
                 }
                 password == "" -> {

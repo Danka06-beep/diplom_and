@@ -1,6 +1,7 @@
 package com.kuzmin.nirvana
 
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -44,6 +45,14 @@ class UserActivity : AppCompatActivity() {
         }
         attachPhotoImgSetting.setOnClickListener {
             dispatchTakePictureIntent()
+        }
+        exitUser.setOnClickListener {
+            getSharedPreferences(API_SHARED_FILE,Context.MODE_PRIVATE)
+                .edit()
+                .remove(AUTHENTICATED_SHARED_KEY)
+                .apply()
+            val intent = Intent(this@UserActivity, MainActivity::class.java)
+            startActivity(intent)
         }
         }
     private fun changePassw(){

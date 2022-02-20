@@ -286,8 +286,9 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
             }
             when (post.attachment?.mediaType) {
                 PostModel.AttachmentType.IMAGE -> loadImage(photoImg, post.attachment.url) }
-            when (post.authorAttachment?.attachment?.mediaType) {
-                PostModel.AttachmentType.IMAGE -> loadImage(avatar, post.authorAttachment.attachment.urlUs) }
+            when (post.authorAttachment?.attachment?.mediaType){
+                PostModel.AttachmentType.IMAGE -> loadImage(avatar, post.authorAttachment.attachment.urlUs)
+            }
 
         }
     }

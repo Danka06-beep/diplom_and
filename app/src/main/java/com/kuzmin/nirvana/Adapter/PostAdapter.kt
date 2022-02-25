@@ -179,7 +179,24 @@ class RepostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.View
                     repostsTv.setTextColor(ContextCompat.getColor(context, R.color.grey))
                 }
             }
+            when (post.attachment?.mediaType) {
+                PostModel.AttachmentType.IMAGE -> loadImageRepost(imgcont, post.attachment.url) }
+            when (post.authorAttachment?.attachment?.mediaType){
+                PostModel.AttachmentType.IMAGE -> loadImageRepost(avatarRp, post.authorAttachment.attachment.urlUs)
+            }
+            when (post.authorAttachment?.attachment?.mediaType){
+                PostModel.AttachmentType.IMAGE -> loadImageRepost(avatarIv, post.authorAttachment.attachment.urlUs)
+            }
         }
+    }
+
+    private fun loadImageRepost(photoImg: ImageView, imageUrl: String) {
+        val requestOptionsCompat =  RequestOptions()
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.common_google_signin_btn_icon_dark)
+        Glide.with(photoImg.context)
+            .load(imageUrl)
+            .into(photoImg)
     }
 
 }

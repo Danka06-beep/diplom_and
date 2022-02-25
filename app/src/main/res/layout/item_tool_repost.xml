@@ -11,7 +11,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    android:padding="16dp">
+    android:padding="30dp">
 
     <ImageView
         android:id="@+id/avatarIv"
@@ -20,8 +20,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contentRp"
-        android:src="@drawable/ic_baseline_account_circle_24"
-        tools:srcCompat="@drawable/ic_baseline_account_circle_24"/>
+        android:src="@drawable/ic_launcher_background" />
 
     <TextView
         android:id="@+id/createdTv"
@@ -61,13 +60,13 @@
         android:id="@+id/likeBtnTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_thumb_up_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/likesTv"
-        app:layout_constraintTop_toBottomOf="@+id/contentTv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentImg"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -75,70 +74,70 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="52dp"
         android:text="0"
         android:textColor="#ff0000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/dislikeBtnTv"
-        app:layout_constraintTop_toBottomOf="@+id/contentTv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentImg"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/dislikeBtnTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_thumb_down_false"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toStartOf="@+id/dislikeTxtTv"
+        android:layout_marginStart="76dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/contentTv"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_baseline_thumb_down_false"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentImg"
+        app:layout_constraintVertical_bias="0.096" />
 
     <TextView
         android:id="@+id/dislikeTxtTv"
-        tools:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toStartOf="@id/shareBtn"
-        app:layout_constraintTop_toBottomOf="@+id/contentTv"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentImg"
+        app:layout_constraintVertical_bias="0.138"
+        tools:text="0" />
 
     <ImageButton
+        android:id="@+id/shareBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_share_24"
-        android:id="@+id/shareBtn"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toStartOf="@+id/repostsTv"
+        android:layout_marginStart="128dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/contentTv"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_baseline_share_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentImg"
+        app:layout_constraintVertical_bias="0.064" />
 
     <TextView
         android:id="@+id/repostsTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="156dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contentTv"
-        app:layout_constraintVertical_bias="0.238"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentImg"
+        app:layout_constraintVertical_bias="0.138"
         tools:text="0" />
 
     <ImageView
         android:id="@+id/avatarRp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="41dp"
+        android:layout_height="37dp"
+        android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_baseline_account_circle_24" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/autorRP"
@@ -158,5 +157,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatarRp" />
+
+
+    <FrameLayout
+        android:id="@+id/contentImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contentTv">
+
+        <ImageView
+            android:id="@+id/imgcont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
